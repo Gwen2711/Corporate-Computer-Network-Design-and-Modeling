@@ -76,19 +76,8 @@ SSH
 Access Control Lists (ACL)
 NAT/PAT
 Wireless Networking
-VLAN Structure
-VLAN ID	Purpose
-10	Development
-20	IT Support
-30	HR
-40	Finance
-50	Administration
-60	Voice
-70	Servers
-80	Guest WiFi
-90	Staff WiFi
-100	Printers
-110	Management
+See detailed VLAN Structure in documentation.
+
 
 Security Features:
 Department-based VLAN segmentation
