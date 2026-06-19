@@ -1,0 +1,209 @@
+SW2#show running-config 
+Building configuration...
+
+Current configuration : 3525 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname SW2
+!
+!
+!
+ip ssh version 2
+ip domain-name office.local
+!
+username admin secret 5 $1$mERr$RldxcCZEZsTFTETUyRaA50
+!
+vtp mode transparent
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan 30
+ name HR
+!
+vlan 40
+ name FINANCE
+!
+vlan 50
+ name ADMIN
+!
+vlan 60
+ name VOICE
+!
+vlan 80
+ name GUEST_WIFI
+!
+vlan 90
+ name STAFF_WIFI
+!
+vlan 99
+ name UNUSED
+!
+vlan 100
+ name PRINTERS
+!
+vlan 110
+ name MANAGEMENT
+!
+interface Port-channel2
+ description LINK_TO_CORE
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,100,110
+ switchport mode trunk
+!
+interface FastEthernet0/1
+ description HR-01+PHONE
+ switchport access vlan 30
+ switchport mode access
+ switchport voice vlan 60
+ spanning-tree portfast
+!
+interface FastEthernet0/2
+ description HR-02
+ switchport access vlan 30
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ description HR-PRINTER
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ description FIN-01+PHONE
+ switchport access vlan 40
+ switchport mode access
+ switchport voice vlan 60
+ spanning-tree portfast
+!
+interface FastEthernet0/5
+ description FIN-02
+ switchport access vlan 40
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ description FIN-PRINTER
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/7
+ description ADM-01+PHONE
+ switchport access vlan 50
+ switchport mode access
+ switchport voice vlan 60
+ spanning-tree portfast
+!
+interface FastEthernet0/8
+ description ADM-02
+ switchport access vlan 50
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/9
+ description ADM-PRINTER
+ switchport access vlan 100
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/10
+ description CONFERENCE-PHONE
+ switchport access vlan 99
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/11
+ description NETADMIN-PC
+ switchport access vlan 110
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/12
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/13
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/14
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/15
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/16
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/17
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/18
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/19
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/20
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/21
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/22
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/23
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,100,110
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface FastEthernet0/24
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,100,110
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan110
+ ip address 192.168.110.4 255.255.255.0
+!
+!
+!
+!
+access-list 10 permit host 192.168.110.10
+line con 0
+!
+line vty 0 4
+ access-class 10 in
+ login local
+ transport input ssh
+line vty 5 15
+ login
+!
+!
+!
+!
+end

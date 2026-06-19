@@ -1,0 +1,305 @@
+CORE#show running-config 
+Building configuration...
+
+Current configuration : 6084 bytes
+!
+version 12.2(37)SE1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname CORE
+!
+!
+no profinet
+!
+!
+!
+!
+!
+ip routing
+!
+!
+!
+!
+username admin privilege 15 secret 5 $1$mERr$bOGY5oTRj4eFa7h2a3MIX0
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip ssh version 2
+ip domain-name office.local
+!
+!
+vtp mode transparent
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+vlan 10
+ name DEVELOPMENT
+!
+vlan 20
+ name SUPPORT
+!
+vlan 30
+ name HR
+!
+vlan 40
+ name FINANCE
+!
+vlan 50
+ name ADMIN
+!
+vlan 60
+ name VOICE
+!
+vlan 70
+ name SERVERS
+!
+vlan 80
+ name GUEST_WIFI
+!
+vlan 90
+ name STAFF_WIFI
+!
+vlan 99
+!
+vlan 100
+ name PRINTERS
+!
+vlan 110
+ name MANAGEMENT
+!
+interface Port-channel1
+ description LINK_TO_SW1
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,100,110
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Port-channel2
+ description LINK_TO_SW2
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,100,110
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/1
+ switchport access vlan 70
+!
+interface FastEthernet0/2
+ no switchport
+ ip address 10.0.0.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/3
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/4
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/5
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/6
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/7
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/8
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/9
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/10
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/11
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/12
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/13
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/14
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/15
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/16
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/17
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/18
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/19
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/20
+ switchport access vlan 99
+ shutdown
+!
+interface FastEthernet0/21
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,100,110
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface FastEthernet0/22
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,100,110
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 2 mode active
+!
+interface FastEthernet0/23
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,100,110
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface FastEthernet0/24
+ switchport trunk allowed vlan 10,20,30,40,50,60,70,80,90,100,110
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/1
+ switchport access vlan 110
+!
+interface GigabitEthernet0/2
+ switchport access vlan 70
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan10
+ mac-address 0005.5ee9.4801
+ ip address 192.168.10.1 255.255.255.0
+ ip helper-address 192.168.70.10
+!
+interface Vlan20
+ mac-address 0005.5ee9.4802
+ ip address 192.168.20.1 255.255.255.0
+ ip helper-address 192.168.70.10
+!
+interface Vlan30
+ mac-address 0005.5ee9.4803
+ ip address 192.168.30.1 255.255.255.0
+ ip helper-address 192.168.70.10
+!
+interface Vlan40
+ mac-address 0005.5ee9.4804
+ ip address 192.168.40.1 255.255.255.0
+ ip helper-address 192.168.70.10
+!
+interface Vlan50
+ mac-address 0005.5ee9.4805
+ ip address 192.168.50.1 255.255.255.0
+ ip helper-address 192.168.70.10
+!
+interface Vlan60
+ mac-address 0005.5ee9.4806
+ ip address 192.168.60.1 255.255.255.0
+ ip helper-address 192.168.70.10
+!
+interface Vlan70
+ mac-address 0005.5ee9.4807
+ ip address 192.168.70.1 255.255.255.0
+!
+interface Vlan80
+ mac-address 0005.5ee9.4808
+ ip address 192.168.80.1 255.255.255.0
+ ip helper-address 192.168.70.10
+!
+interface Vlan90
+ mac-address 0005.5ee9.4809
+ ip address 192.168.90.1 255.255.255.0
+ ip helper-address 192.168.70.10
+!
+interface Vlan100
+ mac-address 0005.5ee9.480a
+ ip address 192.168.100.1 255.255.255.0
+!
+interface Vlan110
+ mac-address 0005.5ee9.480b
+ ip address 192.168.110.2 255.255.255.0
+!
+ip classless
+ip route 0.0.0.0 0.0.0.0 10.0.0.1 
+!
+ip flow-export version 9
+!
+!
+ip access-list extended MGMT-PROTECT
+ permit ip host 192.168.110.10 192.168.110.0 0.0.0.255
+ deny ip any 192.168.110.0 0.0.0.255
+ permit ip any any
+access-list 10 permit host 192.168.110.10
+
+ip access-list extended BLOCK_GUEST
+ deny ip 192.168.80.0 0.0.0.255 192.168.10.0 0.0.0.255
+ deny ip 192.168.80.0 0.0.0.255 192.168.20.0 0.0.0.255
+ deny ip 192.168.80.0 0.0.0.255 192.168.30.0 0.0.0.255
+ deny ip 192.168.80.0 0.0.0.255 192.168.40.0 0.0.0.255
+ deny ip 192.168.80.0 0.0.0.255 192.168.50.0 0.0.0.255
+ deny ip 192.168.80.0 0.0.0.255 192.168.60.0 0.0.0.255
+ deny ip 192.168.80.0 0.0.0.255 192.168.70.0 0.0.0.255
+ deny ip 192.168.80.0 0.0.0.255 192.168.90.0 0.0.0.255
+ deny ip 192.168.80.0 0.0.0.255 192.168.100.0 0.0.0.255
+ deny ip 192.168.80.0 0.0.0.255 192.168.110.0 0.0.0.255
+ permit ip any any
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ access-class 10 in
+ login local
+ transport input ssh
+!
+!
+!
+!
+end
