@@ -13,8 +13,6 @@ Software Environment
 The project was designed and tested using:
 
 Cisco Packet Tracer 9.x
-GitHub
-Microsoft Word
 
 Compatibility
 
